@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React, { useState } from 'react'
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+ 
 export default function App() {
+  const [hoTen, sethoTen] = useState("ABC");
+  const CapNhat =(dulieu) =>{
+      sethoTen (dulieu);
+  }
+  const InHoa = ()=>{
+    sethoTen ( hoTen.toUpperCase () );
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+        <Text style={styles.txt}>Ho ten:  {hoTen}  </Text>
+      
+       <TextInput placeholder='Nhap ho ten' 
+       onChangeText={CapNhat}
+       /> 
+       <Button title='In hoa'  onPress={InHoa} />
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  container:{
+    padding:40
   },
+  txt:{ fontSize:30}
 });
